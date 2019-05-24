@@ -67,6 +67,7 @@ static const char *lockcmd[] = { "xsecurelock", NULL };
 static const char *audiomutecmd[] = { "amixer", "-q", "sset", "Master,0", "toggle", NULL };
 static const char *audiodowncmd[] = { "amixer", "-q", "sset", "Master,0", "1%-", "unmute", NULL };
 static const char *audioupcmd[] = { "amixer", "-q", "sset", "Master,0", "1%+", "unmute", NULL };
+static const char *exitcmd[] = { "killall", "xinit", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -105,6 +106,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	TAGKEYS(                        XK_0,                      9)
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = exitcmd } },
 
         { 0,                            XF86XK_AudioMute, spawn, {.v = audiomutecmd } },
         { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = audiodowncmd } },
