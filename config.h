@@ -64,6 +64,9 @@ static const char *trackpadcmd[] = { "toggle-trackpad", NULL };
 static const char *brightnessdowncmd[] = { "xbacklight", "-5", NULL };
 static const char *brightnessupcmd[] = { "xbacklight", "+5", NULL };
 static const char *lockcmd[] = { "xsecurelock", NULL };
+static const char *audiomutecmd[] = { "amixer", "-q", "sset", "Master,0", "toggle", NULL };
+static const char *audiodowncmd[] = { "amixer", "-q", "sset", "Master,0", "1%-", "unmute", NULL };
+static const char *audioupcmd[] = { "amixer", "-q", "sset", "Master,0", "1%+", "unmute", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -103,6 +106,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_0,                      9)
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
 
+        { 0,                            XF86XK_AudioMute, spawn, {.v = audiomutecmd } },
+        { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = audiodowncmd } },
+        { 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = audioupcmd } },
         { 0,                            XF86XK_AudioMicMute, spawn, {.v = trackpadcmd } },
         { 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightnessdowncmd } },
         { 0,                            XF86XK_MonBrightnessUp, spawn, {.v = brightnessupcmd } },
