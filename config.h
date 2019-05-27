@@ -10,10 +10,10 @@ static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Roboto:size=12" };
 static const char dmenufont[]       = "Roboto:size=12";
 static const char col_gray1[]       = "#282828";
-static const char col_gray2[]       = "#383838";
-static const char col_gray3[]       = "#B8B8B8";
-static const char col_gray4[]       = "#E8E8E8";
-static const char col_cyan[]        = "#484848";
+static const char col_gray2[]       = "#3C3836";
+static const char col_gray3[]       = "#BDAE93";
+static const char col_gray4[]       = "#EBDBB2";
+static const char col_cyan[]        = "#504945";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
