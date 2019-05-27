@@ -9,11 +9,11 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Roboto:size=12" };
 static const char dmenufont[]       = "Roboto:size=12";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_gray1[]       = "#282828";
+static const char col_gray2[]       = "#383838";
+static const char col_gray3[]       = "#B8B8B8";
+static const char col_gray4[]       = "#E8E8E8";
+static const char col_cyan[]        = "#484848";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -60,7 +60,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]    = { "rofi", "-show", "run", NULL };
+/* static const char *dmenucmd[]    = { "rofi", "-show", "run", NULL }; */
+static const char *dmenucmd[]    = { "dmenu_run", "-fn", "Roboto-12", NULL };
 static const char *termcmd[]     = { "alacritty", NULL };
 static const char *trackpadcmd[] = { "toggle-trackpad", NULL };
 static const char *brightnessdowncmd[] = { "xbacklight", "-5", NULL };
