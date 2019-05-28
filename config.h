@@ -36,7 +36,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.6;  /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
@@ -61,16 +61,16 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 /* static const char *dmenucmd[]    = { "rofi", "-show", "run", NULL }; */
-static const char *dmenucmd[]    = { "dmenu_run", "-fn", "Roboto-12", NULL };
-static const char *termcmd[]     = { "alacritty", NULL };
-static const char *trackpadcmd[] = { "toggle-trackpad", NULL };
+static const char *dmenucmd[]          = { "dmenu_run", "-fn", "Roboto-12", NULL };
+static const char *termcmd[]           = { "alacritty", NULL };
+static const char *trackpadcmd[]       = { "toggle-trackpad", NULL };
 static const char *brightnessdowncmd[] = { "xbacklight", "-5", NULL };
-static const char *brightnessupcmd[] = { "xbacklight", "+5", NULL };
-static const char *lockcmd[] = { "xsecurelock", NULL };
-static const char *audiomutecmd[] = { "amixer", "-q", "sset", "Master,0", "toggle", NULL };
-static const char *audiodowncmd[] = { "amixer", "-q", "sset", "Master,0", "1%-", "unmute", NULL };
-static const char *audioupcmd[] = { "amixer", "-q", "sset", "Master,0", "1%+", "unmute", NULL };
-static const char *exitcmd[] = { "killall", "xinit", NULL };
+static const char *brightnessupcmd[]   = { "xbacklight", "+5", NULL };
+static const char *lockcmd[]           = { "xsecurelock", NULL };
+static const char *audiomutecmd[]      = { "amixer", "-q", "sset", "Master,0", "toggle", NULL };
+static const char *audiodowncmd[]      = { "amixer", "-q", "sset", "Master,0", "1%-", "unmute", NULL };
+static const char *audioupcmd[]        = { "amixer", "-q", "sset", "Master,0", "1%+", "unmute", NULL };
+static const char *exitcmd[]           = { "killall", "xinit", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
