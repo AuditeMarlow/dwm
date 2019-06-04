@@ -61,7 +61,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 /* static const char *dmenucmd[]    = { "rofi", "-show", "run", NULL }; */
-static const char *dmenucmd[]          = { "dmenu_run", "-fn", "Roboto-12", "-l", "10", "-nb", "#3C3835", "-nf", "#EBDBB2", "-sb", "#504945", "-sf", "#EBDBB2", NULL };
+static const char *dmenucmd[]          = { "dmenu_run", "-fn", "Roboto-14", "-l", "10", "-nb", "#3C3835", "-nf", "#EBDBB2", "-sb", "#504945", "-sf", "#EBDBB2", NULL };
 static const char *termcmd[]           = { "alacritty", NULL };
 static const char *trackpadcmd[]       = { "toggle-trackpad", NULL };
 static const char *brightnessdowncmd[] = { "xbacklight", "-5", NULL };
