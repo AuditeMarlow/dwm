@@ -7,8 +7,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Roboto:size=12" };
-static const char dmenufont[]       = "Roboto:size=12";
+static const char *fonts[]          = { "Roboto:size=14" };
+static const char dmenufont[]       = "Roboto:size=14";
 static const char col_gray1[]       = "#282828";
 static const char col_gray2[]       = "#3C3836";
 static const char col_gray3[]       = "#BDAE93";
@@ -29,10 +29,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class         instance    title       tags mask     isfloating   monitor */
-        { "qutebrowser", NULL,       NULL,       1 << 2,       0,           -1 },
-        { "Chromium",    NULL,       NULL,       1 << 6,       0,           -1 },
-        { "Spotify" ,    NULL,       NULL,       1 << 8,       0,           -1 },
-        { "Telegram",    NULL,       NULL,       1 << 9,       0,           -1 },
+	{ "qutebrowser", NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Chromium",    NULL,       NULL,       1 << 6,       0,           -1 },
+	{ "Spotify" ,    NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Telegram",    NULL,       NULL,       1 << 9,       0,           -1 },
 };
 
 /* layout(s) */
@@ -40,11 +40,13 @@ static const float mfact     = 0.6;  /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
+#include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[T]",      tile },    /* first entry is default */
 	{ "[C]",      centeredmaster },    /* no layout function means floating behavior */
 	{ "[F]",      monocle },
+	{ "[G]",      grid },
 };
 
 /* key definitions */
@@ -60,8 +62,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-/* static const char *dmenucmd[]    = { "rofi", "-show", "run", NULL }; */
-static const char *dmenucmd[]          = { "dmenu_run", "-fn", "Roboto-14", "-l", "10", "-nb", "#3C3835", "-nf", "#EBDBB2", "-sb", "#504945", "-sf", "#EBDBB2", NULL };
+static const char *dmenucmd[]          = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-l", "10", "-nb", col_gray2, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]           = { "alacritty", NULL };
 static const char *trackpadcmd[]       = { "toggle-trackpad", NULL };
 static const char *brightnessdowncmd[] = { "xbacklight", "-5", NULL };
@@ -90,6 +91,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_a,      view,           {.ui = ~0 } },
@@ -111,12 +113,12 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = exitcmd } },
 
-        { 0,                            XF86XK_AudioMute, spawn, {.v = audiomutecmd } },
-        { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = audiodowncmd } },
-        { 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = audioupcmd } },
-        { 0,                            XF86XK_AudioMicMute, spawn, {.v = trackpadcmd } },
-        { 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightnessdowncmd } },
-        { 0,                            XF86XK_MonBrightnessUp, spawn, {.v = brightnessupcmd } },
+	{ 0,                            XF86XK_AudioMute, spawn, {.v = audiomutecmd } },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = audiodowncmd } },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = audioupcmd } },
+	{ 0,                            XF86XK_AudioMicMute, spawn, {.v = trackpadcmd } },
+	{ 0,                            XF86XK_MonBrightnessDown, spawn, {.v = brightnessdowncmd } },
+	{ 0,                            XF86XK_MonBrightnessUp, spawn, {.v = brightnessupcmd } },
 };
 
 /* button definitions */
