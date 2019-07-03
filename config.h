@@ -28,11 +28,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class         instance    title       tags mask     isfloating   monitor */
-	{ "qutebrowser", NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "Chromium",    NULL,       NULL,       1 << 6,       0,           -1 },
-	{ "Spotify" ,    NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Telegram",    NULL,       NULL,       1 << 9,       0,           -1 },
+	/* class               instance    title       tags mask     isfloating   monitor */
+	{ "qutebrowser",       NULL,       NULL,       1 << 2,       0,           1 },
+	{ "Chromium",          NULL,       NULL,       1 << 6,       0,           1 },
+	{ "FortiClientSSLVPN", NULL,       NULL,       1 << 7,       1,           1 },
+	{ "Spotify",           NULL,       NULL,       1 << 8,       0,           0 },
+	{ "Telegram",          NULL,       NULL,       1 << 9,       0,           0 },
 };
 
 /* layout(s) */
@@ -63,6 +64,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]          = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-l", "10", "-nb", col_gray2, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *browsercmd[]        = { "qutebrowser", NULL };
 static const char *termcmd[]           = { "st", NULL };
 static const char *trackpadcmd[]       = { "toggle-trackpad", NULL };
 static const char *brightnessdowncmd[] = { "xbacklight", "-5", NULL };
@@ -87,6 +89,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_p,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,                       XK_q,      spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[1]} },
